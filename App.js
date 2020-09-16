@@ -7,7 +7,7 @@
  */
 import 'react-native-gesture-handler';
 import React from 'react';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import FirstScreen from './screen/FirstScreen';
 import SecondScreen from './screen/SecondScreen';
@@ -27,7 +27,7 @@ import TopTab3 from './toptab/TopTab3';
 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import { NavigationContainer ,DrawerActions} from "@react-navigation/native";
+import { NavigationContainer, DrawerActions } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
@@ -47,9 +47,10 @@ const App = () => {
               onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
               style={[{ color: 'black', marginLeft: 8 }]}
               size={24}
-              name={'ios-person'}
+              name={'menu'}
             />
-        })} />
+        })
+        } />
       <Stack.Screen name="Second" component={SecondScreen}
         options={{
           title: "Second page",
@@ -74,28 +75,29 @@ const App = () => {
   const bottomTabStack = () => {
     return (<BottomTab.Navigator>
       <BottomTab.Screen name="Home" component={BottomTab1}
-        // options={{
-        //   tabBarLabel: 'Map',
-        //   tabBarIcon: () => (
-        //     <Icon style={[{ color: 'white' }]} size={25} name={'map'} />
-        //   ),
-        // }} 
-        />
-      <BottomTab.Screen name="Feed" component={BottomTab2} 
-      // options={{
-      //   tabBarLabel: 'Profile',
-      //   tabBarIcon: () => (
-      //     <Icon style={[{ color: 'white' }]} size={25} name={'human'} />
-      //   )
-      // }}
-       />
+        options={{
+          tabBarLabel: 'Map',
+          tabBarIcon: () => (
+            <Icon style={[{ color: 'white' }]} size={25} name={'home'} />
+          ),
+        }}
+      />
+      <BottomTab.Screen name="Feed" component={BottomTab2}
+        options={{
+          tabBarLabel: 'Profile',
+          tabBarIcon: () => (
+            <Icon style={[{ color: 'white' }]} size={25} name={'human'} />
+          )
+        }}
+      />
       <BottomTab.Screen name="History" component={BottomTab3}
-        // options={{
-        //   tabBarIcon: () => {
-        //     <Icon style={[{ color: 'white' }]} size={25} name={'home'} />
-        //   }
-        // }}
-         />
+        options={{
+          tabBarLabel: 'Profile',
+          tabBarIcon: () => (
+            <Icon style={[{ color: 'white' }]} size={25} name={'map'} />
+          )
+        }}
+      />
     </BottomTab.Navigator>)
   }
 
